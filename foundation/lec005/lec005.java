@@ -150,7 +150,7 @@ public class lec005
     }*/
 
     ///BINERY SEARCH
-    ///Self////
+    
 
     public static void main(String[] args)
     {

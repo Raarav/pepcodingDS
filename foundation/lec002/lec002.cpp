@@ -61,7 +61,7 @@ int main(){
     ///
 
     
-  int val,r,rem;
+    int val,r,rem;
     cin>>val;
     cin>>r;
     int val1=val;
