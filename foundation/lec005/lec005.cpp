@@ -4,6 +4,7 @@
 3.printing minimum element in vector array
 4.searching value through LINEAR SEARCH
 5.searching element in vector array through Bineary search
+6.storing extra element in vector using pushback function
 */
 
 
@@ -160,7 +161,7 @@ int main()
 */
 
 /////searching element in vector array through Bineary search
-
+/*
 void input(vector<int> &vec)
 {
     for(int i=0;i<vec.size();i++)
@@ -208,7 +209,25 @@ int main()
     input(vec);
     cout<<binearySearch(vec);
 }
+*/
 
+
+///////storing extra element in vector using pushback function
+
+int main()
+{
+    vector<int> vec({1,2,3,4,5});
+    vec.push_back(6);
+    vec.push_back(65);
+    vec.pop_back();
+    for(int i=0;i<vec.size();i++)
+    {
+        cout<<vec[i]<<" ";
+    }
+    cout<<endl;
+    cout<<vec.size();
+    return 0;
+}
 
 
 

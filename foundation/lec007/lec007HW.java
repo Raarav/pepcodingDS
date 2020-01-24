@@ -72,11 +72,47 @@ public class lec007HW
             }
             System.out.println();
         }
-        System.out.println("Saddle points:-");
+        System.out.print("Saddle point:-");
         sadelPoint(arr);
+        for(int i=0;i<arr1.length;i++)
+        {
+            for(int j=0;j<arr1[0].length;j++)
+            {
+                System.out.print(arr1[i][j] + "\t");
+            }
+            System.out.println();
+        }
+        System.out.print("Saddle point:-");
         sadelPoint(arr1);
+        for(int i=0;i<arr2.length;i++)
+        {
+            for(int j=0;j<arr2[0].length;j++)
+            {
+                System.out.print(arr2[i][j] + "\t");
+            }
+            System.out.println();
+        }
+        System.out.print("Saddle point:-");
         sadelPoint(arr2);
+        for(int i=0;i<arr3.length;i++)
+        {
+            for(int j=0;j<arr3[0].length;j++)
+            {
+                System.out.print(arr3[i][j] + "\t");
+            }
+            System.out.println();
+        }
+        System.out.print("Saddle point:-");
         sadelPoint(arr3);
+        for(int i=0;i<arr4.length;i++)
+        {
+            for(int j=0;j<arr4[0].length;j++)
+            {
+                System.out.print(arr4[i][j] + "\t");
+            }
+            System.out.println();
+        }
+        System.out.print("Saddle point:-");
         sadelPoint(arr4);
     } 
     public static void sadelPoint(int[][] arr)

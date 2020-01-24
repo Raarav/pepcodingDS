@@ -59,6 +59,7 @@ public class lec008
     */
 
     /// lec007HW.java>>>printing sprial pattern2
+    /*
 
     public static void main(String[] args)
     {
@@ -120,6 +121,7 @@ public class lec008
         }
     }
 
+    */
     ///////////rotate90 of array
     /*
     public static void main(String[] args)
@@ -178,21 +180,44 @@ public class lec008
     /////find sub array which sum is maximum and print array value.
     /////kaden's algorithm
 
-    /*
+    
 
     public static void main(String[] args)
     {
         int[] arr = {3,5,-1,-7,8,4,2,-6,10};
-        int sum=0;
-        for(int i=0;i<arr.length;i++)
+        int ci=0;
+        int cj=0;
+        int bi=0;
+        int bj=0;
+        int csum=arr[0];
+        int osum=arr[0];
+        for(int i=1;i<arr.length;i++)
         {
-            for(int j=i;j<arr.length;j++)
+            if(csum>0)
             {
-                sum += arr[j];
+                cj++;
+                csum += arr[i];
+            }
+            else
+            {
+                ci=i;
+                cj=i;
+                csum=arr[i];
+            }
+            if(csum>osum)
+            {
+                bi=ci;
+                bj=cj; 
+                osum=csum;
             }
         }
-    }
-
-    */
-           
+        int sum=0;
+        for(int i=bi;i<=bj;i++)
+        {
+            sum += arr[i];
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+        System.out.print("Total sum of sub array:- "+sum);
+    }         
 }
