@@ -5,32 +5,35 @@ using namespace std;
 
 void sumOf2ArrayFunc(vector<int> &arr1,vector<int> &arr2)
 {
-    vector<int> sum(arr1.size()>arr2.size()?arr1.size():arr2.size(),0); 
+    vector<int> sum(arr2.size(),0); 
     int i=arr1.size()-1;
     int j=arr2.size()-1;
     int k=sum.size()-1;
     int c=0;
     while (k>=0)
     {
-        int d = c;
+        int d=0;
         if(i>=0)
         {
-            d+=arr1[i];
+            if(arr1[i]>=arr2[j])
+            {
+                d=(arr1[i] + 10)-arr2[j];
+                arr1[i+1]-=1;                        
+            }
+            else
+            {
+                d=arr1[i]-arr2[j];                                              
+            }     
         }
-        if(j>=0)
+        else
         {
-            d+=arr2[j];
+            d=arr2[j];
         }
-        c=d/10;
-        d=d%10;
+        
         sum[k]=d;
         i--;
         j--;
         k--;
-    }
-    if(c!=0)
-    {
-        cout<<c<<endl;
     }
     for(int w:sum)
     {
