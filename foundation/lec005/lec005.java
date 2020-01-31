@@ -29,7 +29,7 @@ public class lec005
     }
     */
 
-    //////////self//////finding maximum vaalue in array
+    //////////self//////finding maximum value in array
 
 
     /*
@@ -107,6 +107,7 @@ public class lec005
         return max;
     }
     */
+    
     //////LINEAR SEARCH
 
     ////not self//////check exiting value
