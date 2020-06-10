@@ -3,28 +3,27 @@
 
 using namespace std;
 
-void sumOf2ArrayFunc(vector<int> &arr1,vector<int> &arr2)
+void differenceOf2Array(vector<int> &arr1,vector<int> &arr2)
 {
     vector<int> sum(arr2.size(),0); 
     int i=arr1.size()-1;
     int j=arr2.size()-1;
     int k=sum.size()-1;
-    int c=0;
     while (k>=0)
     {
         int d=0;
         if(i>=0)
         {
-            if(arr1[i]>=arr2[j])
+            if(arr2[j]<arr1[i])
             {
-                d=(arr1[i] + 10)-arr2[j];
-                arr1[i+1]-=1;                        
+                d=(arr2[j] + 10)-arr1[i];
+                arr2[j-1]-=1;                                    
             }
             else
             {
-                d=arr1[i]-arr2[j];                                              
+                d=arr2[j]-arr1[i];                                              
             }     
-        }
+         }
         else
         {
             d=arr2[j];
@@ -58,5 +57,5 @@ int main()
     {
         cin>>arr2[i];
     }
-    sumOf2ArrayFunc(arr1,arr2);
+    differenceOf2Array(arr1,arr2);
 }

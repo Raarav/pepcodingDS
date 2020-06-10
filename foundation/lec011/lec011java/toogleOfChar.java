@@ -23,8 +23,7 @@ public class toogleOfChar
     public static void main(String[] args)
     {
         String str = "abcDeF";
-        String str1=  toogleOfCharfunc(str);
-        
+        String str1=  toogleOfCharfunc(str);        
         System.out.print(str1);
     }
 }

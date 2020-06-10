@@ -1,3 +1,7 @@
+/*
+1.)subset of array
+*/
+
 #include<iostream>
 #include<vector>
 

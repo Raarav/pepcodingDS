@@ -9,6 +9,7 @@ import java.util.*;
 
 public class lec007HW
 {
+    /*
     ///printting element diagonally
     
     public static void main(String[] args)
@@ -53,6 +54,7 @@ public class lec007HW
             
         }
     }
+    */
     
 /*
     /// finding sadel point in matrix
@@ -174,7 +176,7 @@ public class lec007HW
     */
 
     /////printing wave like pattern
-    /*
+    
 
     public static void main(String[] args)
     {        
@@ -213,5 +215,5 @@ public class lec007HW
 
     
 
-    */
+    
 }

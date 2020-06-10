@@ -1,4 +1,8 @@
 /// first ocuurene in array
+///last ocurrence in array
+/*
+1.)subset of array
+*/
 
 import java.util.*;
 
@@ -6,50 +10,50 @@ public class lec009
 {
 
     ////first Ocuurence
-    /*
-    public static void main(String[] args)
-    {
-        Scanner scn = new Scanner(System.in);
-        int[] arr = {1,1,1,3,3,3,4,5,7,8,8,9,9};
-        int data = scn.nextInt();
-        System.out.println(firstOcrence(arr, data));
-        // System.out.println(ans);
-    }
-    public static int firstOcrence(int[]  arr, int data)
-    {
-        int left = 0;
-        int right = arr.length-1;
+    
+    // public static void main(String[] args)
+    // {
+    //     Scanner scn = new Scanner(System.in);
+    //     int[] arr = {7,12,12,12,12,33,44};
+    //     int data = scn.nextInt();
+    //     System.out.println(firstOcrence(arr, data));
+    //     // System.out.println(ans);
+    // }
+    // public static int firstOcrence(int[]  arr, int data)
+    // {
+    //     int left = 0;
+    //     int right = arr.length-1;
 
-        while(left<=right)
-        {
-            int mid = (left+right)/2;
-            if(arr[mid]==data)
-            {
-                if(mid-1>=0 && arr[mid]==data)
-                {
-                    right =  mid-1;
-                }else
-                {
-                    return mid;
-                }
-            }
-            else if(arr[mid]>data)
-            {
-                right=mid-1;
-            }
-            else
-            {
-                left=mid+1;
-            }
-        }
-        return -1;
-    }
+    //     while(left<=right)
+    //     {
+    //         int mid = (left+right)/2;
+    //         if(arr[mid]==data)
+    //         {
+    //             if(mid-1>=0 && arr[mid-1]==data)
+    //             {
+    //                 right =  mid-1;
+    //             }else
+    //             {
+    //                 return mid;
+    //             }
+    //         }
+    //         else if(arr[mid]>data)
+    //         {
+    //             right=mid-1;
+    //         }
+    //         else
+    //         {
+    //             left=mid+1;
+    //         }
+    //     }
+    //     return -1;
+    // }
 
-    */
+
 
     ////last Ocuurence
 
-    /*
+    
     public static void main(String[] args)
     {
         Scanner scn = new Scanner(System.in);
@@ -70,7 +74,7 @@ public class lec009
             {
                 if(mid+1<arr.length && arr[mid]==data)
                 {
-                    right =  mid-1;
+                    left =  mid+1;
                 }else
                 {
                     return mid;
@@ -88,7 +92,7 @@ public class lec009
         return -1;
     }
 
-    */
+    
 
     //remain//rotation
 
@@ -121,7 +125,7 @@ public class lec009
 
 ////////////////////subsquence of array    
 
-    
+    /*
 
     public static void main(String[] args)
     {
@@ -150,8 +154,7 @@ public class lec009
                     System.out.print(arr[length] + " ");
                 }
                 length++;                
-            }
-            
+            }            
             count++;
             System.out.println("]");
         }
@@ -159,7 +162,7 @@ public class lec009
     }
     
 
-////subsequences of array
+////subarrays of array
 
 /*
 public static void main(String[] args)

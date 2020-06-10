@@ -1,3 +1,8 @@
+// finding maximum value in array
+/////finding min value
+//////LINEAR SEARCH
+///BINERY SEARCH    
+
 import java.util.*;
 public class lec005
 {
