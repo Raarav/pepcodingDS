@@ -29,12 +29,32 @@ public class genericTree{
     }
 
     //? maximum node in a tree
-    public static int max(Node node){
-        int idx = 0;
+    public static int maxV(Node node){
+       int maxValue=0;        
         for(Node child: node.children){
-            idx = max(node);
+            maxValue=Math.max(maxValue,maxV(child));
         }
+        maxValue=Math.max(maxValue,node.data);
+        return maxValue;
     }
+
+    //? Height of generic Tree
+    //* height is depth of the depest node 
+    public static int Height(Node node){
+        int ht = -1;
+        for(Node child: node.children)
+        {
+            ht=Math.max(ht,Height(child));
+        }
+        ht += 1;
+        return ht;
+    }
+
+    //? traverse of pre and post order of generic tree
+    public static void traverse(Node node){
+        
+    }
+
 
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
@@ -67,6 +87,12 @@ public class genericTree{
         // System.out.print(size(root));
 
         //? maximum node in a tree
-        System.out.print(max(root));
+        // System.out.print(maxV(root));
+
+        //? Height of generic Tree
+        // System.out.print(Height(root));
+
+        //? traverse of pre and post order of generic tree
+        traverse(root);
     }
 }
