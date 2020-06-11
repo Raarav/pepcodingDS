@@ -52,7 +52,7 @@ public class genericTree{
 
     //? traverse of pre and post order of generic tree
     public static void traverse(Node node){
-        
+                
     }
 
 
