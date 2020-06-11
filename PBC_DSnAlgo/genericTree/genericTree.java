@@ -52,9 +52,31 @@ public class genericTree{
 
     //? traverse of pre and post order of generic tree
     public static void traverse(Node node){
-                
+        System.out.println("Node Pre" + node.data);
+        for(Node child: node.children)
+        {
+            System.out.println("Edge Pre " + node.data + "--" + child.data);
+            traverse(child);
+            System.out.println("Edge Post " + node.data + "--" + child.data);
+        }    
+        System.out.println("Node Post " + node.data);
     }
 
+    //? level Order traversal
+    public static void levelOrderTraversal(Node node){
+        Queue<Node> q = new ArrayDeque<Node>();
+        q.add(node);
+        while(q.size()>0)
+        {
+            node=q.remove();
+            System.out.print(node.data +" ");
+            for(Node child: node.children)
+            {
+                q.add(child);
+            }
+        }
+        System.out.print(".");
+    }
 
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
@@ -93,6 +115,9 @@ public class genericTree{
         // System.out.print(Height(root));
 
         //? traverse of pre and post order of generic tree
-        traverse(root);
+        // traverse(root);
+
+        //?level Order traversal
+        levelOrderTraversal(root);
     }
 }
