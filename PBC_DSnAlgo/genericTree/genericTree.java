@@ -3,7 +3,24 @@ import java.util.*;
 public class genericTree{
     public static class Node{
         int data;
+        int level;
         ArrayList<Node> children = new ArrayList<>();
+
+        Node()
+        {
+
+        }
+
+        Node(int d)
+        {
+            this.data=d;
+        }
+
+        Node(int d, int l)
+        {
+            this.data=d;
+            this.level=l;
+        }
     }
     //* display of tree
     public static void display(Node node){                
@@ -78,7 +95,148 @@ public class genericTree{
         System.out.print(".");
     }
 
-    //? 
+    // //? print levelOrder traversal LineWise
+    // //*self
+    // public static void levelOrderTraversalLineWise(Node node){
+    //     Queue<Node> q = new ArrayDeque<Node>();
+    //     Queue<Node> cq = new ArrayDeque<Node>();
+    //     q.add(node);
+    //     while(q.size()>0){
+    //         while(q.size()>0){       
+    //         Node remove = q.remove();
+    //         System.out.print(remove.data + " ");
+    //         for(Node child: remove.children){
+    //             cq.add(child);
+    //         }  
+    //     } 
+    //     System.out.println();
+    
+    //         while(cq.size()>0)
+    //         {
+    //             q.add(cq.remove());
+    //         }
+    //     }
+       
+    // }
+
+    //? print levelOrder traversal LineWise
+    //! sir code optimis code
+    //* 1st Approch
+    // public static void levelOrderTraversalLineWise(Node node){
+    //     Queue<Node> q = new ArrayDeque<Node>();
+    //     q.add(node);
+    //     Queue<Node> cq = new ArrayDeque<Node>();
+    //     while(q.size()>0)
+    //     {
+    //         Node remove = q.remove();
+    //         System.out.print(remove.data+" ");
+    //         for(Node child: remove.children)
+    //         {
+    //             cq.add(child);
+    //         }
+    //         if(q.size()==0)
+    //         {
+    //             q = cq;
+    //             cq = new ArrayDeque<Node>();
+    //             System.out.println();
+    //         }
+    //     }
+    // }
+
+    // //? print levelOrder traversal LineWise
+    // //! sir code optimis code
+    // //* 2nd Approch
+    // public static void levelOrderTraversalLineWise(Node node){
+    //     Queue<Node> q = new ArrayDeque<Node>();
+    //     q.add(node);
+    //     q.add(new Node(-1));
+    //     while(q.size()>0)
+    //     {
+    //         node = q.remove();
+    //         if(node.data==-1)
+    //         {
+    //             if(q.size()>0){
+    //                 q.add(new Node(-1));
+    //                 System.out.println();
+    //             }
+    //         }else{
+    //             System.out.print(node.data + " ");
+    //             for(Node child : node.children)
+    //             {
+    //                 q.add(child);
+    //             }
+    //         }
+    //     }
+    // }
+
+    // //? print levelOrder traversal LineWise
+    // //! sir code optimis code
+    // //* 3rd Approch
+    // public static void levelOrderTraversalLineWise(Node node){
+    //     Queue<Node> q = new ArrayDeque<Node>();
+    //     q.add(node);
+    //     while(q.size()>0)
+    //     {
+    //         int csize=q.size();
+    //         for(int i=0;i<csize;i++){
+    //             node = q.remove();
+    //             System.out.print(node.data + " ");
+    //             for(Node child : node.children)
+    //             {
+    //                 q.add(child);                    
+    //             }
+    //         }
+    //         System.out.println();
+            
+    //     }
+    // }
+
+    //? print levelOrder traversal LineWise
+    //! sir code optimis code
+    //* 4rth Approch
+    public static void levelOrderTraversalLineWise(Node node){
+        Queue<Node> q = new ArrayDeque<Node>();
+        q.add(node);
+        q.add(new Node(node.data,1));
+        while(q.size()>0)
+        {
+                        
+        }
+    }
+
+
+
+    //?print level order linewise Zig-Zag
+    public static void levelOrderTraversalLineWiseZigZag(Node node){
+        Stack<Node> s = new Stack<Node>();
+        s.add(node);
+        Stack<Node> cs = new Stack<Node>();
+        int level = 0;
+        while(s.size()>0){
+            Node popEle=s.pop();   
+            System.out.print(popEle.data+" ");
+            if(level%2==0)
+            {
+                for(int i=0;i<popEle.children.size();i++){
+                    Node child = popEle.children.get(i);
+                    cs.push(child);
+                }
+            }else{
+                for(int i=popEle.children.size()-1;i>=0;i--)
+                {
+                    Node child = popEle.children.get(i);
+                    cs.push(child);
+                }
+            }  
+            if(s.size()==0)
+            {
+                s = cs;
+                cs = new Stack<Node>();
+                level++;
+                System.out.println();
+            }                 
+        }      
+    }
 
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
@@ -119,7 +277,14 @@ public class genericTree{
         //? traverse of pre and post order of generic tree
         // traverse(root);
 
-        //?level Order traversal
-        levelOrderTraversal(root);
+        //? level Order traversal
+        // levelOrderTraversal(root); 
+
+        //? print levelOrder traversal LineWise
+        levelOrderTraversalLineWise(root);
+
+        //?print level order linewise Zig-Zag
+        // levelOrderTraversalLineWiseZigZag(root);
+
     }
 }
