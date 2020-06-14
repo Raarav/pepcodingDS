@@ -261,6 +261,31 @@ public class genericTree{
         }
     }
 
+    //? Remove leave node of genericTree
+    //* through String
+    public static void removeLeaveNodeGenericTreeThroughString(Node node){
+        String st = node.data + " -> ";
+        for(Node child: node.children){
+            if(child.children.size()>0){
+                st += child.data + ", ";
+            }            
+        }
+        st += ".";
+        System.out.println(st);
+        for(Node child: node.children){
+            if(child.children.size()>0){
+                removeLeaveNodeGenericTreeThroughString(child);
+            }
+        }
+    }
+
+    //? Remove leave node of genericTree
+    public static void removeLeaveNodeGenericTree(Node node){
+        for(int i=node.children.size()-1;i>=0;i--){
+            
+        }
+    }
+
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
         int[] arr = {10,20,50,-1,60,-1,-1,30,70,-1,80,110,-1,120,-1,-1,90,-1,-1,40,100,-1,-1,-1};
@@ -310,6 +335,15 @@ public class genericTree{
         // levelOrderTraversalLineWiseZigZag(root);
 
         //?Mirror a genericTree
-        mirrorGenericTree(root);
+        // display(root);
+        // mirrorGenericTree(root);
+
+        //? removeLeaveNodeGenericTree(root);
+        //* through String  
+        // removeLeaveNodeGenericTreeThroughString(root);
+
+        //? removeLeaveNodeGenericTree(root);
+        removeLeaveNodeGenericTree(root);
+        display(root);
     }
 }
