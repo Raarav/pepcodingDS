@@ -196,12 +196,22 @@ public class genericTree{
     //* 4rth Approch
     public static void levelOrderTraversalLineWise(Node node){
         Queue<Node> q = new ArrayDeque<Node>();
-        q.add(node);
-        q.add(new Node(node.data,1));
+        int level=1;
+        q.add(new Node(node.data,node.level));
         while(q.size()>0)
         {
-                        
+            node=q.remove();
+            if(node.level>level){
+                level=node.level;
+                System.out.println();
+            }
+            System.out.print(node.data+" ");
+            for(Node child : node.children)
+            {
+                q.add(new Node(child.data,level+1));
+            }
         }
+
     }
 
 
@@ -236,6 +246,18 @@ public class genericTree{
                 System.out.println();
             }                 
         }      
+    }
+
+    //?Mirror a genericTree
+    public static void mirrorGenericTree(Node node){
+        Queue<Node> q = new ArrayDeque<Node>();
+        q.add(node);
+        while(q.size()>0)
+        {
+            for(int i=node.children.size()-1;i>=0;i--){
+                System.out.print(node.data+" ");                
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -281,10 +303,12 @@ public class genericTree{
         // levelOrderTraversal(root); 
 
         //? print levelOrder traversal LineWise
-        levelOrderTraversalLineWise(root);
+        // levelOrderTraversalLineWise(root);
 
         //?print level order linewise Zig-Zag
         // levelOrderTraversalLineWiseZigZag(root);
 
+        //?Mirror a genericTree
+        mirrorGenericTree(root);
     }
 }
