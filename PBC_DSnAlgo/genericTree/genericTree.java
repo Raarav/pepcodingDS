@@ -26,7 +26,7 @@ public class genericTree{
     public static void display(Node node){                
         String str = node.data+"->";
         for(Node child: node.children){
-            str += node.data + ", ";
+            str += child.data + ", ";
         }
         str+=".";
         System.out.println(str);
@@ -280,11 +280,27 @@ public class genericTree{
     }
 
     //? Remove leave node of genericTree
+    //* node remove technique //*not self
     public static void removeLeaveNodeGenericTree(Node node){
         for(int i=node.children.size()-1;i>=0;i--){
-            
+            Node child = node.children.get(i);
+            if(child.children.size()==0){
+                node.children.remove(i);
+            }
+        }
+        for(Node child: node.children){
+            removeLeaveNodeGenericTree(child);            
         }
     }
+
+    //?Linearize A GenericTree
+    //*
+    public static void linearizeGenericTree(Node node){
+        for(int i=0;i<node.children.size();i++){
+            if()
+        }
+    }
+
 
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
@@ -343,7 +359,10 @@ public class genericTree{
         // removeLeaveNodeGenericTreeThroughString(root);
 
         //? removeLeaveNodeGenericTree(root);
-        removeLeaveNodeGenericTree(root);
-        display(root);
+        // removeLeaveNodeGenericTree(root);
+        // display(root);
+
+        //? Linearize GenerictTree
+        linearizeGenericTree(root);
     }
 }
