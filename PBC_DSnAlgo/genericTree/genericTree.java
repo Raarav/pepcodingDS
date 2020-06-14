@@ -249,16 +249,15 @@ public class genericTree{
     }
 
     //?Mirror a genericTree
-    public static void mirrorGenericTree(Node node){
-        Queue<Node> q = new ArrayDeque<Node>();
-        q.add(node);
-        while(q.size()>0)
-        {
-            node=q.remove();
-            System.out.print();
-            for(int i=node.children.size()-1;i>=0;i--){
-                q.add(node.children.get(i));               
-            }   
+    public static void mirrorGenericTree(Node node){                
+        String str = node.data+" -> ";
+        for(int i=node.children.size()-1;i>=0;i--){
+            str += node.children.get(i).data + ", ";
+        }
+        str+=".";
+        System.out.println(str);
+        for(int i=node.children.size()-1;i>=0;i--){
+            mirrorGenericTree(node.children.get(i));
         }
     }
 
