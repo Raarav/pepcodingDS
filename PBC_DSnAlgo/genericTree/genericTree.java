@@ -254,9 +254,11 @@ public class genericTree{
         q.add(node);
         while(q.size()>0)
         {
+            node=q.remove();
+            System.out.print();
             for(int i=node.children.size()-1;i>=0;i--){
-                System.out.print(node.data+" ");                
-            }
+                q.add(node.children.get(i));               
+            }   
         }
     }
 
