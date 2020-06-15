@@ -24,7 +24,7 @@ public class genericTree{
     }
     //* display of tree
     public static void display(Node node){                
-        String str = node.data+"->";
+        String str = node.data+" -> ";
         for(Node child: node.children){
             str += child.data + ", ";
         }
@@ -293,12 +293,31 @@ public class genericTree{
         }
     }
 
-    //?Linearize A GenericTree
+    //? Linearize A GenericTree
     //*
     public static void linearizeGenericTree(Node node){
-        for(int i=0;i<node.children.size();i++){
-            if()
+        for(Node child:node.children){
+            linearizeGenericTree(child);
         }
+        while(node.children.size()>1)
+        {
+            Node lc = node.children.remove(node.children.size()-1);
+            Node ls = node.children.get(node.children.size()-1);
+            Node slt = getTail(ls);
+            slt.children.add(lc);            
+        }
+    }
+    public static Node getTail(Node node){
+        while(node.children.size()==1)
+        {
+            node=node.children.get(0);
+        }
+        return node;
+    }
+
+    //? find node in GenericTree
+    public static void findGenericTree(Node node){
+
     }
 
 
@@ -363,6 +382,10 @@ public class genericTree{
         // display(root);
 
         //? Linearize GenerictTree
-        linearizeGenericTree(root);
+        // linearizeGenericTree(root);
+        // display(root);
+
+        //?
+        findGenericTree(root);
     }
 }
