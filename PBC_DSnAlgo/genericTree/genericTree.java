@@ -342,10 +342,28 @@ public class genericTree{
             boolean ans = findGenericTree(child, x);
             if(ans)
             {
-                return ans;
+                return true;
             }
         }
         return false;
+    }
+
+    //? find node to root path
+    public static ArrayList<Integer> findNode2rootPath(Node node,int x){
+        if(node.data==x){
+            ArrayList<Integer> ans = new ArrayList<>();
+            ans.add(node.data);
+            return ans;
+        }
+        for(Node child: node.children)
+        {
+            ArrayList<Integer> res = findNode2rootPath(child, x);
+            if(res.size()>0){
+                res.add(node.data);
+                return res;
+            }
+        }
+        return new ArrayList<Integer>();
     }
 
 
@@ -414,6 +432,9 @@ public class genericTree{
         // display(root);
 
         //?find Element in GenericTree
-        System.out.print(findGenericTree(root,120));
+        // System.out.print(findGenericTree(root,120));
+
+        //? find node to root path
+        System.out.print(findNode2rootPath(root,120));
     }
 }
