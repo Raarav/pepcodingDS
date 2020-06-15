@@ -315,9 +315,37 @@ public class genericTree{
         return node;
     }
 
-    //? find node in GenericTree
-    public static void findGenericTree(Node node){
+    // //? find node in GenericTree
+    // public static boolean findGenericTree(Node node,int x){
+    //     boolean ans = false;
+    //     for(Node child: node.children)
+    //     {
+    //         if(child.data == x)
+    //         {
+    //             ans = true;
+    //             return ans;
+    //         }
+    //        ans = ans || findGenericTree(child,x);
+    //     }
+    //     return ans;
+    // }
 
+    //? find node in GenericTree
+    //* optimise implemantation
+    public static boolean findGenericTree(Node node,int x){
+        if(node.data==x)
+        {
+            return true;
+        }
+        for(Node child : node.children)
+        {
+            boolean ans = findGenericTree(child, x);
+            if(ans)
+            {
+                return ans;
+            }
+        }
+        return false;
     }
 
 
@@ -385,7 +413,7 @@ public class genericTree{
         // linearizeGenericTree(root);
         // display(root);
 
-        //?
-        findGenericTree(root);
+        //?find Element in GenericTree
+        System.out.print(findGenericTree(root,120));
     }
 }
