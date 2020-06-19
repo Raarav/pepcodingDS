@@ -22,15 +22,26 @@ class printPermutationsOfString{
     }
 
     //?
-    public static void  throughBacktracking(st){
+    public static void throughSubString(String st){
+        for(int i=0;i<st.string;i++){
+            
+        }
+    }
+
+    //?
+    public static void  throughBacktracking(String st){
 
     } 
     public static void main(String[] args)
     {
         Scanner scn = new Scanner(System.in);
         String st = scn.nextLine();
+
+
         // printPermuationsOfStringFunc(st,"");
-        throughBacktracking(st);
+
+        throughSubString(st);
+        // throughBacktracking(st);
 
     }
 }
