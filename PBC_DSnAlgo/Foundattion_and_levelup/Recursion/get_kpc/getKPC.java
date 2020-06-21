@@ -1,7 +1,7 @@
 import java.util.*;
 
 class getKPC{
-    static String[] code = {""};
+    static String[] code = {".;", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz"};
 
     public static ArrayList<String> getKPCFunc(String st){
         if(st.length()==0) {
@@ -20,7 +20,7 @@ class getKPC{
             }
             // myans.add();    
         }
-        return finalans;
+        return myans;
     }
 
     public static void main(String[] args){

@@ -5,5 +5,6 @@ public class zeroOneKnapSack {
         Scanner scn = new Scanner();
         int n = scn.nextInt();
         
+        zoks();
     }        
 }
