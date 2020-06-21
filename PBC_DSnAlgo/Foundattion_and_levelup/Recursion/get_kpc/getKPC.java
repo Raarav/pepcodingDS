@@ -14,7 +14,11 @@ class getKPC{
         char ch = st.charAt(0);
         String clength = code[ch-'0'];
         for(int i=0;i<clength.length();i++){
-            myans.add();    
+            for(int j=0;j<res.size();j++)
+            {
+                myans.add(clength.charAt(i)+res.get(j));
+            }
+            // myans.add();    
         }
         return finalans;
     }
