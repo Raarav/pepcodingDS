@@ -3,13 +3,13 @@ import java.util.*;
 public class goldmine {
 
     public static int gmineHelper(int i,int[][] arr,int j){
-        if(j==arr[0].length){
-            if(i<0) return arr[i+1][j-1];  
-            else if(i>arr.length-1) return arr[i-1][j-1];  
-            else{return arr[i][j-1];}
+        if(j==arr[0].length-1){
+            if(i<0) return arr[i+1][j];
+            else if(i>arr.length-1) return arr[i-1][j];
+            else return arr[i][j];
         }
         if(i<0 || i>arr.length-1){
-            return 0;
+            return Integer.MIN_VALUE;
         }
         int up = gmineHelper(i-1, arr,j+1);
         int same = gmineHelper(i, arr,j+1);
@@ -25,7 +25,7 @@ public class goldmine {
         for(int i=0;i<arr.length;i++)
         {
             ansArr[i] = gmineHelper(i,arr,0);
-            System.out.println(ansArr[i]);
+            // System.out.println(ansArr[i]);
             if(max<ansArr[i]){
                 max=ansArr[i];
             }
