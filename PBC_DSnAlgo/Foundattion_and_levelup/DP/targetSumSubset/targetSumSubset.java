@@ -12,7 +12,7 @@ public class targetSumSubset {
         boolean ans = tss(arr,tar-arr[idx],idx+1) || tss(arr,tar,idx+1);
         return ans;   
     }
-    public static void main(String[] args) {
+        public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
         int[] arr = new int[n];

@@ -3,14 +3,15 @@ import java.util.*;
 public class goldmine {
 
     public static int gmineHelper(int i,int[][] arr,int j){
-        if(j==arr[0].length-1){
-            if(i<0) return arr[i+1][j];
-            else if(i>arr.length-1) return arr[i-1][j];
-            else return arr[i][j];
-        }
+        
         if(i<0 || i>arr.length-1){
             return Integer.MIN_VALUE;
         }
+
+        if(j==arr[0].length-1){
+            return arr[i][j];
+        }
+        
         int up = gmineHelper(i-1, arr,j+1);
         int same = gmineHelper(i, arr,j+1);
         int down = gmineHelper(i+1, arr,j+1);
