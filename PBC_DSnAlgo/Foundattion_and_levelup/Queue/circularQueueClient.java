@@ -8,5 +8,7 @@ public class circularQueueClient {
         q.add(40);
         q.add(50);
         q.display();
+        q.remove();
+        q.display();
     }             
 }

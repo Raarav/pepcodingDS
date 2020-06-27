@@ -26,7 +26,7 @@ public class circularQueue {
         }
         int rear = (front+size)%data.length;
         data[rear]=val;
-        size++;
+        size++; 
     }
 
     public int size(){
@@ -49,6 +49,7 @@ public class circularQueue {
         }
         int re = this.data[this.front%data.length];
         front = front + 1;
+        size--;
         return re;
     }
 }
