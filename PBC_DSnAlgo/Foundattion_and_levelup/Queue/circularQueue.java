@@ -22,7 +22,9 @@ public class circularQueue {
 
     public void add(int val){
         if(size==data.length){
-            System.out.print("Stack OverFlow");    
+            System.out.print("Stack OverFlow"); 
+            System.out.println();
+            return;   
         }
         int rear = (front+size)%data.length;
         data[rear]=val;
@@ -35,16 +37,18 @@ public class circularQueue {
 
     public int peek(){
         if(size==0){
-            System.out.print("Stack underflow");
+            System.out.print("Queue underflow");
+            System.out.println();
             return -1;
         }
         int rv = front;        
-        return rv;
+        return data[rv];
     }
 
     public int remove(){
         if(size==0){
-            System.out.print("Stack underflow");
+            System.out.print("Queue underflow");
+            System.out.println();
             return -1;
         }
         int re = this.data[this.front%data.length];

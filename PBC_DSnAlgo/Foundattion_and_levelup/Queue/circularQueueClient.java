@@ -10,5 +10,8 @@ public class circularQueueClient {
         q.display();
         q.remove();
         q.display();
+        System.out.print(q.peek());
+        System.out.println();
+        System.out.print(q.size());
     }             
 }
