@@ -11,14 +11,19 @@ public class nextGreaterElem {
         int[] res = new int[n];
         Stack<Integer> st = new Stack<>();
         for(int i=0;i<n;i++){
-            if(arr[i]<st.peek()&&st.size()!=0){
-                res[st.pop()]=arr[i];
-            }else if(arr[i]<&&st.size()!=0){
-
+            if(st.size()!=0&&arr[i]>arr[st.peek()]){
+                while(st.size()!=0&&arr[st.peek()]<arr[i]){
+                    res[st.pop()]=arr[i];                    
+                }
             }
-            else{
-                st.push(i);
-            }            
+            st.push(i);         
+        }
+        while(st.size()>0){
+            res[st.pop()]=-1;
+        }
+        for(int i=0;i<res.length;i++)
+        {
+            System.out.println(res[i]);
         }
     }    
-}
+}   
