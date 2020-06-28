@@ -3,7 +3,7 @@ public class stack {
     int top;
     int[] data;
     stack(int size){
-        this.top = 0;
+        this.top = -1;
         this.data = new int[size];
     }
 
@@ -12,8 +12,8 @@ public class stack {
             System.out.print("Stack overflow");
             System.out.println();
         } 
-        this.data[top]=val;
-        top++;    
+        top++;
+        this.data[top]=val;    
     }
 
     public int pop(){
@@ -37,14 +37,15 @@ public class stack {
     }
 
     public int size(){
-        return this.top;
+        return this.top+1;
     }
 
     public void display(){
-        int idx=top-1;
+        int idx=top;
         while(idx>-1){
             System.out.print(data[idx]+" ");
             idx--;
         }
+        System.out.println();
     }
 }
