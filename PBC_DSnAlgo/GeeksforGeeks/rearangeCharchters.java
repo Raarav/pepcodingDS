@@ -1,5 +1,7 @@
 /*package whatever //do not write package name here */
 
+//? Question Link :- https://practice.geeksforgeeks.org/problems/rearrange-characters/0
+
 import java.util.*;
 import java.lang.*;
 import java.io.*;
