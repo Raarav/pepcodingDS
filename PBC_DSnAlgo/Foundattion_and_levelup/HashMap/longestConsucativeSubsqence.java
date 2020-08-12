@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-import java.util.Map
+import java.util.Map;
 
 class longestConsucativeSubsqence{
 
@@ -15,18 +15,29 @@ class longestConsucativeSubsqence{
         for(int ele: hm.keySet()){
             if(hm.containsKey(ele-1)==false && hm.containsKey(ele+1)==true){
                 ele=ele+1;
-                while(hm.containsKey(ele)!=false){
-                    int ans = hm.get(ele);
+                int ans = hm.get(ele);
+                while(hm.containsKey(ele)!=false){                    
                     hm.put(ele,ans+1);
+                    System.out.println(ele + "->" + hm.get(ele));
                     ele=ele+1;
                 }    
             }
         }
+        System.out.println(hm.keySet());
         int max = 0;
+        int maxele = 0;
         for(int e : hm.keySet()){
             if(max<hm.get(e)){
+                maxele=e;
                 max=hm.get(e);
             }
+        }
+        System.out.println("ooooooooooooooooooooo");
+        System.out.println(maxele);
+        System.out.println(max);
+        System.out.println("ooooooooooooooooooooo");
+        for(int i=0;i<max;i++){
+            System.out.println(maxele-i);   
         }
 
         // System.out.print(hm); 
