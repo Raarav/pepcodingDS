@@ -27,7 +27,7 @@ public class dynamicStack {
         void push(int val) {
             if (tos == data.length - 1) {
                 // System.out.println("Stack overflow");
-                int[] ndata = new int[2*tos];
+                int[] ndata = new int[2*(tos+1)];
                 for(int i=0;i<data.length;i++){
                     ndata[i]=data[i];
                 }
