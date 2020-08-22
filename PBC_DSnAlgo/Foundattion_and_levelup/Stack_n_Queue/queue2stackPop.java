@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class queue2stackAdapater {
+public class queue2stackPop {
 
     public static class QueueToStackAdapter {
         Queue < Integer > mainQ;
@@ -19,46 +19,35 @@ public class queue2stackAdapater {
 
         void push(int val) {
             // write your code here
-            mainQ.add(val);
+            if(mainQ.size()==0){
+                mainQ.add(val);
+            }else {
+                helperQ.add(val);
+                while(mainQ.size()!=0){
+                    helperQ.add(mainQ.remove());
+                }
+                while(helperQ.size()!=0){
+                    mainQ.add(helperQ.remove());
+                }
+            }
         }
 
         int pop() {
             // write your code here
-            int val = -1;
-            if (mainQ.size() == 0) {
+            if(mainQ.size()==0){
                 System.out.println("Queue underflow");
-            }else if(mainQ.size()==1){
-                val=mainQ.remove();
-            }else {
-                while(mainQ.size()!=1){
-                    helperQ.add(mainQ.remove());
-                }
-                val=mainQ.remove();
-                while(helperQ.size()!=0){
-                    mainQ.add(helperQ.remove());
-                }
+                return -1;
             }
-            return val;
+            return mainQ.remove();
         }
 
         int top() {
             // write your code here
-            int val = -1;
-            if (mainQ.size() == 0) {
+            if(mainQ.size()==0){
                 System.out.println("Queue underflow");
-            }else if(mainQ.size()==1){
-                val=mainQ.peek();
-            }else {
-                while(mainQ.size()!=1){
-                    helperQ.add(mainQ.remove());
-                }
-                val=mainQ.peek();
-                helperQ.add(mainQ.remove());
-                while(helperQ.size()!=0){
-                    mainQ.add(helperQ.remove());
-                }
+                return -1;
             }
-            return val;
+            return mainQ.peek();
         }
     }
 
