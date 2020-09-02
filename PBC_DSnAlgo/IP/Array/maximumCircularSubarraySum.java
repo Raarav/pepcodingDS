@@ -1,4 +1,4 @@
-/*package whatever //do not write package name here */
+}/*package whatever //do not write package name here */
 
 import java.util.*;
 import java.lang.*;
@@ -6,7 +6,7 @@ import java.io.*;
 
 class GFG {
     public static int kedans(int[] arr){
-        int cmax=Integer.MIN_VALUE,smax=Integer.MIN_VALUE,i=0,j=0,m=0,n=0;
+        int cmax=0,smax=Integer.MIN_VALUE,i=0,j=0,m=0,n=0;
         while(j<arr.length){
             cmax+=arr[j];
             if(cmax<0){
@@ -46,7 +46,12 @@ class GFG {
     		for(int i=0;i<arr.length;i++){
     		    arr[i]=scn.nextInt();
     		}
-    		System.out.println(mcss(arr));
+    		int ans = mcss(arr);
+    		if(ans<=0){
+    		    System.out.print("-1");
+    		}else{
+    		    System.out.print(ans);
+    		}
     		t--;
 		}
 	}
