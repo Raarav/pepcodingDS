@@ -1,4 +1,4 @@
-}/*package whatever //do not write package name here */
+/*package whatever //do not write package name here */
 
 import java.util.*;
 import java.lang.*;
@@ -25,32 +25,42 @@ class GFG {
     public static int mcss(int[] arr){
         int val1 = kedans(arr);
         int[] revArr = new int[arr.length];
+        
+                int sumEle = 0;
+
         for(int i=0;i<arr.length;i++){
             revArr[i]=arr[i] * -1;
+            sumEle += arr[i];
+
         }
         int val2 = kedans(revArr);
-        int sumEle = 0;
-        for(int i=0;i<arr.length;i++){
-            sumEle += arr[i];
-        }
+        // for(int i=0;i<arr.length;i++){
+        //     sumEle += arr[i];
+        // }
         val2=sumEle-(-1*val2);
+        // return val2;
         return val1>val2?val1:val2;
     }
-	public static void main (String[] args) {
+	public static void main (String[] args) throws IOException {
 		//code
-		Scanner scn = new Scanner(System.in);
-		int t = scn.nextInt();
-		while(t>0){
-    		int n = scn.nextInt();
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		
+// 		Scanner scn = new Scanner(System.in);
+// 		int t = scn.nextInt();
+int t=Integer.parseInt(br.readLine());
+    while(t>0){
+    // 		int n = scn.nextInt();
+    int n=Integer.parseInt(br.readLine());
+        String[] inp=br.readLine().split(" ");
     		int[] arr = new int[n];
     		for(int i=0;i<arr.length;i++){
-    		    arr[i]=scn.nextInt();
-    		}
+    		    arr[i]=Integer.parseInt(inp[i]);
+    		   }
     		int ans = mcss(arr);
     		if(ans<=0){
-    		    System.out.print("-1");
+    		    System.out.println("-1");
     		}else{
-    		    System.out.print(ans);
+    		    System.out.println(ans);
     		}
     		t--;
 		}

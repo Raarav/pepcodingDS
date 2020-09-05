@@ -5,21 +5,19 @@ import java.lang.*;
 import java.io.*;
 
 class chocolateDistributionProblem {
-    public static int fpgd(int[] arr,int n1){
-        HashMap<Integer, Integer> hm = new HashMap<>();
-        for(int i=0;i<arr.length;i++){
-            hm.put(arr[i],1);
-        }
-        boolean flag=false;
-        for(int i=0;i<arr.length;i++){
-            int remain=n1+arr[i];
-            if(hm.containsKey(remain)){
-                flag=true;
-                break;
-            }
-        }
-        
-        return flag==true?1:-1;
+    public static void swap(int a,int b,int[] arr) {
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;    
+    }
+    public static int[] mergeSortRecursive(int leftIndex, int rightIndex, int[] arr) {
+        if(leftIndex==rightIndex) 
+        int mididx = leftIndex+(rightIndex-1)/2;
+        mergeSortRecursive(leftIndex,mididx,arr); 
+        mergeSortRecursive(mididx,rightIndex,arr);   
+    }
+    public static int cdp(int[] arr,int n1){
+        int[] sortedArray = mergeSortRecursive(0,arr.length,arr);
     }
 	public static void main (String[] args) {
 		//code
