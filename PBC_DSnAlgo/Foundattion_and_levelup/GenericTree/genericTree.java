@@ -29,6 +29,26 @@ class genericTree{
         s = s + 1;
         return s;
     }
+    //max
+    public static int max(Node node){
+        int maxValue = Integer.MIN_VALUE;
+        for(Node child: node.children){
+            int cs = max(child);
+            maxValue = Math.max(cs,maxValue);
+        }
+        maxValue=Math.max(node.data,maxValue);
+        return maxValue;
+    }
+    // height
+    public static int height(Node node) {
+        int ht = -1;
+        for(Node child: node.children){
+            int current_ht = height(child);
+            ht = Math.max(current_ht,ht);
+        }
+        ht += 1;
+        return ht;
+    }
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
@@ -58,6 +78,13 @@ class genericTree{
         //?display
         // display(root);
         //?size
-        System.out.print(size(root));        
+        // System.out.print(size(root));     
+        //?max
+        // System.out.print(max(root));
+        //?height
+        System.out.print(height(root));
     }
 }
+
+// 12
+// 10 20 -1 30 50 -1 60 -1 -1 40 -1 -1
