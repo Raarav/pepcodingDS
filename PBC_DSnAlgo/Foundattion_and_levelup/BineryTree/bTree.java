@@ -255,7 +255,48 @@ class bTree{
     }
 
     // Print Single Child Nodes
-    print_singleChild(root)
+    public static void print_singleChild(Node node, Node parent){
+
+        if(node == null) return;
+
+        if(parent != null && parent.left == node && parent.right == null){
+            System.out.println(node.data);
+        } else if(parent != null && parent.right == node && parent.left == null){
+            System.out.println(node.data);
+        }
+
+        print_singleChild(node.left, node);
+        print_singleChild(node.right, node);
+
+    }
+
+    // Remove Leaves In Binary Tree
+    public static Node remove_leaves(Node node){
+
+        if(node == null) return null;
+
+        if(node.left == null && node.right == null) return null;
+
+        node.left = remove_leaves(node.left);
+        node.right = remove_leaves(node.right); 
+
+        return node;
+
+    }
+
+    // Diameter of a binary Tree
+    public static int diameter_of_a_binaryTree(Node node){
+
+        if(node == null) return -1;
+
+        int lft_ht = diameter_of_a_binaryTree(node.left);
+        int rft_ht = diameter_of_a_binaryTree(node.right);  
+        
+        int max_ht = height(node.left) + height(node.right) + 2;
+
+        return max_ht;
+    }
+
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));   
@@ -354,12 +395,16 @@ class bTree{
         // display(transBack_normal_tree(root));
 
         // Print Single Child Nodes
-        print_singleChild(root);
+        // print_singleChild(root,null);
 
+        // Remove Leaves In Binary Tree
+        // display(remove_leaves(root));
 
+        // Diameter Of A Binary Tree
+        System.out.print(diameter_of_a_binaryTree(root));
     }
 }
 
 // 19
 // 50 25 12 n n 37 30 n n n 75 62 n 70 n n 87 n n
-// 30 
+// 30  
