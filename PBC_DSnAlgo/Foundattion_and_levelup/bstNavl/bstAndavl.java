@@ -278,6 +278,35 @@
             print_inRange(node.right,lo,hi,ans);
         }
 
+        //? Target Sum Pair In Bst
+        static class Tar_piar implements Comparable<Tar_piar> {
+            int val1;
+            int val2;
+            Tar_piar(int val1,int val2){
+                this.val1=val1;
+                this.val2=val2;
+            }
+
+            public int compareTo(Tar_piar t){
+                return this.val1 - t.val1;
+            }
+        }
+        public static void target_sum_pair(Node node,int tar,PriorityQueue<Tar_piar> ans,HashMap<Integer,Integer> hm){
+            if(node==null){
+                return;
+            }
+
+            if(hm.containsKey(tar - node.data)==true){
+                Tar_piar p = new Tar_piar(node.data,tar-node.data);
+                ans.add(p);
+            }
+
+            hm.put(node.data,1);
+            target_sum_pair(node.right,tar,ans,hm);
+            hm.put(node.data,1);         
+            target_sum_pair(node.left,tar,ans,hm);      
+        }
+
         public static void main(String[] args) throws IOException {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             int n = Integer.parseInt(br.readLine());
@@ -324,12 +353,22 @@
             // System.out.print(lca(root,lo,hi));
 
             //? Print In Range
-            int lo = Integer.parseInt(br.readLine());
-            int hi = Integer.parseInt(br.readLine());
-            ArrayList<Integer> ans = new ArrayList<>();
-            print_inRange(root,lo,hi,ans);
-            for(int i=0;i<ans.size();i++){
-                System.out.println(ans.get(i));
+            // int lo = Integer.parseInt(br.readLine());
+            // int hi = Integer.parseInt(br.readLine());
+            // ArrayList<Integer> ans = new ArrayList<>();
+            // print_inRange(root,lo,hi,ans);
+            // for(int i=0;i<ans.size();i++){
+            //     System.out.println(ans.get(i));
+            // }
+
+            //? Target Sum Pair In Bst
+            int tar = Integer.parseInt(br.readLine());
+            PriorityQueue<Tar_piar> ans = new PriorityQueue<>();
+            HashMap<Integer,Integer> hm = new HashMap<>();
+            target_sum_pair(root,tar,ans,hm);
+            for(int i=0;i<=ans.size();i++){
+                Tar_piar p = ans.remove();
+                System.out.println(p.val1 + " " + p.val2);
             }
         }
     }
