@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 class gNode {
     int data;
@@ -51,8 +52,16 @@ class gNode {
 }
 
 class gTree {
-    public static void main(String[] args) {
-        int[] arr = { 10, 20, -1, 30, 50, -1, 60, -1, -1, 40, -1, -1 };
+    public static void main(String[] args) throws IOException {
+        // int[] arr = { 10, 20, -1, 30, 50, -1, 60, -1, -1, 40, -1, -1 };
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        int[] arr = new int[n];
+        String[] str = br.readLine().split(" ");
+        for(int i=0;i<arr.length;i++){
+            arr[i]=Integer.parseInt(str(i));
+        }
+
         Stack<gNode> st = new Stack<>();
         gNode root = new gNode();
         for (int i = 0; i < arr.length; i++) {
@@ -69,9 +78,17 @@ class gTree {
                 st.push(t);
             }
         }
+
         root.display(root);
+
+        //? size
         System.out.println(root.size(root));
+
+        //? max
         System.out.println(root.max(root));
+
+        //? height
         System.out.print(root.height(root));
+
     }
 }

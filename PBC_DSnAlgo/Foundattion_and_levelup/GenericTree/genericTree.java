@@ -49,6 +49,56 @@ class genericTree{
         ht += 1;
         return ht;
     }
+    
+    // lca
+    public static int lca(Node root, int lo, int hi){
+        Stack<Integer> lo_path = new Stack<>();
+        boolean fl1 = nodeToPath(root,lo,lo_path);
+        Stack<Integer> hi_path = new Stack<>();
+        boolean fl2 = nodeToPath(root,hi,hi_path);
+
+        ArrayList<Integer> ans = new ArrayList<Integer>();
+        int lo_size=lo_path.size();
+        for(int i=0;i<lo_size;i++){
+            ans.add(lo_path.pop());
+        }
+        int i=0;
+        int size = ans.size();
+        while(i<size){
+            int vl1 = ans.get(i);
+            int vl2;
+            if(hi_path.size()>0){
+                vl2 = hi_path.pop();
+            }else{
+                i--;
+                break;
+            }
+            if(vl1 != vl2){
+                i--;
+                break;                
+            }
+            i++;
+        }
+        return ans.get(i);
+    }
+
+    public static boolean nodeToPath(Node node,int lo,Stack<Integer> lo_path){
+        if(node.data == lo) {
+            lo_path.push(node.data);
+            return true;
+        }
+
+        for(Node child : node.children){
+            boolean ans = nodeToPath(child,lo,lo_path);
+            if(ans){
+                lo_path.push(node.data);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
@@ -82,7 +132,12 @@ class genericTree{
         //?max
         // System.out.print(max(root));
         //?height
-        System.out.print(height(root));
+        // System.out.print(height(root));
+
+        //? Lowest Common Ancestor (generic Tree)
+        int lo = Integer.parseInt(br.readLine());
+        int hi = Integer.parseInt(br.readLine());
+        System.out.print(lca(root,lo,hi));
     }
 }
 
