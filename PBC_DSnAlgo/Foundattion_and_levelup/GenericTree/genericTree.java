@@ -236,6 +236,20 @@ class genericTree{
         }
     }
 
+    //? Ceil And Floor In Generic Tree
+    static int ceil;
+    static int floor;
+    public static void ceil_floor(Node node,int val){
+        if(node.data < val && node.data > floor){
+                floor = node.data;
+        } else if (node.data > val && node.data < ceil){
+                ceil = node.data;
+        }
+        for(Node child: node.children){
+            ceil_floor(child,val);
+        }
+    }
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
@@ -311,8 +325,10 @@ class genericTree{
         //? Ceil And Floor In Generic Tree
         int val = Integer.parseInt(br.readLine());
         ceil = Integer.MAX_VALUE;
-        floor =Integer.MIN_VALUE; 
-        ceil_floor(root);
+        floor = Integer.MIN_VALUE; 
+        ceil_floor(root,val);
+        System.out.println("CEIL = " + ceil);
+        System.out.println("FLOOR = " + floor);        
     }
 }
 
