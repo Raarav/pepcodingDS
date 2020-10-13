@@ -49,6 +49,27 @@ class genericTree{
         ht += 1;
         return ht;
     }
+
+    //? construct generic Tre
+    public static Node construct(int[] arr){
+        Stack<Node> st = new Stack<>();
+        Node root = null;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]==-1){
+                st.pop();
+            }else{ 
+                Node temp = new Node();
+                temp.data = arr[i];
+                if(st.size()>0){
+                    st.peek().children.add(temp);
+                } else {
+                    root = temp;
+                }
+                st.push(temp);
+            }
+        }
+        return root;
+    }
     
     // lca
     public static int lca(Node root, int lo, int hi){
@@ -99,6 +120,122 @@ class genericTree{
         return false;
     }
 
+    // Distance Between two nodes
+    public static int dis_bt_2node(Node root,int lo,int hi){
+        Stack<Integer> lo_path = new Stack<>();
+        boolean fl1 = nodeToPath(root,lo,lo_path);
+        Stack<Integer> hi_path = new Stack<>();
+        boolean fl2 = nodeToPath(root,hi,hi_path);
+
+        // int i=0;
+        // int size = lo_path.size();
+        while(lo_path.size()>0){
+            int vl1 = lo_path.peek();
+            int vl2;
+            if(hi_path.size()>0){
+                vl2 = hi_path.peek();
+            }else{
+                break;
+            }
+            if(vl1 != vl2){
+                break;                
+            }
+            lo_path.pop();
+            hi_path.pop();
+        }
+
+        return lo_path.size()+hi_path.size();
+    }
+
+    //? Are Trees Similar In Shape
+    public static boolean similar_tree(int[] arr,int[] a_arr,Node root,Node another_root){
+        boolean ans = false;
+        if(arr.length != a_arr.length){
+            ans = false;
+        } else {
+            ans = st_check(root,another_root);
+        }
+        return ans;
+    }
+
+    public static boolean st_check(Node node,Node anode){
+        if(node.children.size()!=anode.children.size()) return false;
+
+        for(int i=0;i<node.children.size();i++) {
+            Node c1 = node.children.get(i);
+            Node c2 = node.children.get(i);
+            if(st_check(c1,c2)==false){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    //? Are Trees Mirror In Shape
+    public static boolean mirror_image(int[] arr,int[] a_arr,Node root,Node another_root){
+        boolean ans = false;
+        if(arr.length != a_arr.length){
+            ans = false;
+        } else {
+            ans = mi_check(root,another_root);
+        }
+        return ans;
+    }
+
+    public static boolean mi_check(Node node,Node anode){
+        if(node.children.size() != anode.children.size()) return false;
+
+        for(int i=0;i<node.children.size();i++){
+            Node c1 = node.children.get(i);
+            Node c2 = anode.children.get(anode.children.size()-(i+1));
+            if(mi_check(c1,c2) == false){
+                return false;
+            }
+        }
+
+        return true;
+    } 
+
+    //? Is Generic Tree Symmetric
+    public static boolean genericTree_smtric(Node node,Node anode){
+        if(node.children.size() != anode.children.size()){
+            return false;
+        }
+
+        int size = node.children.size()%2 == 0?node.children.size()/2:node.children.size()/2+1;
+
+        for(int i=0;i<size;i++){
+            Node c1 = node.children.get(i);
+            Node c2 = anode.children.get(anode.children.size()-(i+1));
+            if(genericTree_smtric(c1,c2) == false){
+                return false;
+            } 
+        }
+
+        return true;
+    }
+
+    //? Predecessor And Successor Of An Element
+    static Node pred = null;
+    static Node succ = null;
+    static int psState;
+    public static void preNsucc_ele(Node node,int val){
+        if(psState == 0){
+            if(node.data == val){
+                psState = 1;
+            } else {
+                pred = node;
+            }
+        } else if(psState == 1){
+            succ = node;
+            psState = 2;
+        }
+        for(Node child: node.children){
+            preNsucc_ele(child,val);
+        }
+    }
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
@@ -108,22 +245,7 @@ class genericTree{
             arr[i]=Integer.parseInt(inp[i]);
         }
 
-        Stack<Node> st = new Stack<>();
-        Node root = null;
-        for(int i=0;i<arr.length;i++){
-            if(arr[i]==-1){
-                st.pop();
-            }else{ 
-                Node temp = new Node();
-                temp.data = arr[i];
-                if(st.size()>0){
-                    st.peek().children.add(temp);
-                } else {
-                    root = temp;
-                }
-                st.push(temp);
-            }
-        }
+        Node root = construct(arr);
         
         //?display
         // display(root);
@@ -135,9 +257,62 @@ class genericTree{
         // System.out.print(height(root));
 
         //? Lowest Common Ancestor (generic Tree)
-        int lo = Integer.parseInt(br.readLine());
-        int hi = Integer.parseInt(br.readLine());
-        System.out.print(lca(root,lo,hi));
+        // int lo = Integer.parseInt(br.readLine());
+        // int hi = Integer.parseInt(br.readLine());
+        // System.out.print(lca(root,lo,hi));
+
+        //? Distance Between Two Nodes In A Generic Tree
+        // int lo = Integer.parseInt(br.readLine());
+        // int hi = Integer.parseInt(br.readLine());
+        // System.out.print(dis_bt_2node(root,lo,hi));
+
+        //? Are Trees Similar In Shape
+        // int another_n = Integer.parseInt(br.readLine());
+        // int[] a_arr = new int[another_n];
+        // String[] a_str = br.readLine().split(" ");
+        // for(int i=0;i<a_arr.length;i++) {
+        //     a_arr[i]=Integer.parseInt(a_str[i]);
+        // }
+
+        // Node another_root = construct(a_arr);   
+        
+        // System.out.print(similar_tree(arr,a_arr,root,another_root));
+
+        //? Are Trees Mirror In Shape
+        // int another_n = Integer.parseInt(br.readLine());
+        // int[] a_arr = new int[another_n];
+        // String[] a_str = br.readLine().split(" ");
+        // for(int i=0;i<a_arr.length;i++) {
+        //     a_arr[i]=Integer.parseInt(a_str[i]);
+        // }
+
+        // Node another_root = construct(a_arr);
+
+        // System.out.print(mirror_image(arr,a_arr,root,another_root));
+
+        //? Is Generic Tree Symmetric
+        // System.out.print(genericTree_smtric(root,root));
+
+        //? Predecessor And Successor Of An Element
+        // int val = Integer.parseInt(br.readLine());
+        // psState = 0;
+        // preNsucc_ele(root,val);
+        // if(pred == null){
+        //     System.out.println(pred);
+        // } else {
+        //     System.out.println(pred.data);
+        // }
+        // if(succ == null){
+        //     System.out.println(succ);
+        // } else {
+        //     System.out.println(succ.data);
+        // }
+
+        //? Ceil And Floor In Generic Tree
+        int val = Integer.parseInt(br.readLine());
+        ceil = Integer.MAX_VALUE;
+        floor =Integer.MIN_VALUE; 
+        ceil_floor(root);
     }
 }
 
