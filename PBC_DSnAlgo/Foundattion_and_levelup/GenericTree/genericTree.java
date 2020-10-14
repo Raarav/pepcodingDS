@@ -147,7 +147,7 @@ class genericTree{
         return lo_path.size()+hi_path.size();
     }
 
-    //? Are Trees Similar In Shape
+    // Are Trees Similar In Shape
     public static boolean similar_tree(int[] arr,int[] a_arr,Node root,Node another_root){
         boolean ans = false;
         if(arr.length != a_arr.length){
@@ -172,7 +172,7 @@ class genericTree{
         return true;
     }
 
-    //? Are Trees Mirror In Shape
+    // Are Trees Mirror In Shape
     public static boolean mirror_image(int[] arr,int[] a_arr,Node root,Node another_root){
         boolean ans = false;
         if(arr.length != a_arr.length){
@@ -197,7 +197,7 @@ class genericTree{
         return true;
     } 
 
-    //? Is Generic Tree Symmetric
+    // Is Generic Tree Symmetric
     public static boolean genericTree_smtric(Node node,Node anode){
         if(node.children.size() != anode.children.size()){
             return false;
@@ -216,7 +216,7 @@ class genericTree{
         return true;
     }
 
-    //? Predecessor And Successor Of An Element
+    // Predecessor And Successor Of An Element
     static Node pred = null;
     static Node succ = null;
     static int psState;
@@ -236,7 +236,7 @@ class genericTree{
         }
     }
 
-    //? Ceil And Floor In Generic Tree
+    // Ceil And Floor In Generic Tree
     static int ceil;
     static int floor;
     public static void ceil_floor(Node node,int val){
@@ -248,6 +248,18 @@ class genericTree{
         for(Node child: node.children){
             ceil_floor(child,val);
         }
+    }
+
+    // Kth Largest Element In Tree
+    public static int kLarge_ele(Node node, int k){
+        floor = Integer.MIN_VALUE;
+        int factor = Integer.MAX_VALUE;        
+        for(int i=0;i<k;i++){
+            ceil_floor(node,factor);
+            factor = floor;
+            floor = Integer.MIN_VALUE;
+        }
+        return factor;
     }
 
     public static void main(String[] args) throws IOException {
@@ -323,12 +335,18 @@ class genericTree{
         // }
 
         //? Ceil And Floor In Generic Tree
+        // int val = Integer.parseInt(br.readLine());
+        // ceil = Integer.MAX_VALUE;
+        // floor = Integer.MIN_VALUE; 
+        // ceil_floor(root,val);
+        // System.out.println("CEIL = " + ceil);
+        // System.out.println("FLOOR = " + floor);
+        
+        //? Kth Largest Element In Tree
         int val = Integer.parseInt(br.readLine());
-        ceil = Integer.MAX_VALUE;
-        floor = Integer.MIN_VALUE; 
-        ceil_floor(root,val);
-        System.out.println("CEIL = " + ceil);
-        System.out.println("FLOOR = " + floor);        
+        System.out.print(kLarge_ele(root,val));
+
+        //? Node With Maximum Subtree Sum
     }
 }
 
