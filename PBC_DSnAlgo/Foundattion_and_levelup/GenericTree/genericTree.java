@@ -70,6 +70,15 @@ class genericTree{
         }
         return root;
     }
+
+    // sum
+    public static int sum(Node node){
+        int sm = 0;
+        for(Node child : node.children){
+            sm += child.data + sum(child);
+        }   
+        return node.children.size() == 0 ? sm : sm + node.data;
+    }
     
     // lca
     public static int lca(Node root, int lo, int hi){
@@ -262,6 +271,25 @@ class genericTree{
         return factor;
     }
 
+    // Node With Maximum Subtree Sum
+    static int msn = 0;
+    static int ms = Integer.MIN_VALUE;
+    public static int nodeMaximum_sum(Node node){
+
+        int sm = 0;
+        for(Node child : node.children){
+            sm += nodeMaximum_sum(child); 
+        } 
+        
+        sm += node.data;
+
+        if(sm>ms){
+            msn = node.data;
+            ms = sm;
+        }
+        return sm;       
+    }
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
@@ -281,6 +309,8 @@ class genericTree{
         // System.out.print(max(root));
         //?height
         // System.out.print(height(root));
+        //? sum
+        // System.out.print(sum(root));
 
         //? Lowest Common Ancestor (generic Tree)
         // int lo = Integer.parseInt(br.readLine());
@@ -343,10 +373,12 @@ class genericTree{
         // System.out.println("FLOOR = " + floor);
         
         //? Kth Largest Element In Tree
-        int val = Integer.parseInt(br.readLine());
-        System.out.print(kLarge_ele(root,val));
+        // int val = Integer.parseInt(br.readLine());
+        // System.out.print(kLarge_ele(root,val));
 
         //? Node With Maximum Subtree Sum
+        nodeMaximum_sum(root);
+        System.out.print(msn + "@" + ms);
     }
 }
 
