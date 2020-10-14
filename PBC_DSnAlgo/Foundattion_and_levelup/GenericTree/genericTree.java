@@ -50,7 +50,7 @@ class genericTree{
         return ht;
     }
 
-    //? construct generic Tre
+    // construct generic Tre
     public static Node construct(int[] arr){
         Stack<Node> st = new Stack<>();
         Node root = null;
@@ -290,6 +290,13 @@ class genericTree{
         return sm;       
     }
 
+    // Diameter Of Generic Tree 
+    public static int dia_genTree(Node node){
+        for(Node child : node.children){
+            
+        }
+    }
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
@@ -377,8 +384,11 @@ class genericTree{
         // System.out.print(kLarge_ele(root,val));
 
         //? Node With Maximum Subtree Sum
-        nodeMaximum_sum(root);
-        System.out.print(msn + "@" + ms);
+        // nodeMaximum_sum(root);
+        // System.out.print(msn + "@" + ms);
+
+        //? Diameter Of Generic Tree
+        System.out.print(dia_genTree(root));
     }
 }
 
