@@ -291,9 +291,13 @@ class genericTree{
     }
 
     // Diameter Of Generic Tree 
+    static int dia = 0;
     public static int dia_genTree(Node node){
+        int dch = -1;
+        int sdch = -1;
         for(Node child : node.children){
-            
+            int ch = dia_genTree(child);
+            if()    
         }
     }
 
