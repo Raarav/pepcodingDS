@@ -4,7 +4,7 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-class GFG {
+class Q301 {
     static class Node{
         int data;
         ArrayList<Node> children = new ArrayList<>();
